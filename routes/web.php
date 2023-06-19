@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 // Importo i miei controller
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProjectController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,8 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::get('/', function () {
     return view('guest.welcome');
 });
+
+Route::resource('/projects', ProjectController::class);
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
