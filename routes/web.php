@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// importo i miei controller
+// Importo i miei controller
 use App\Http\Controllers\Admin\DashboardController;
 
 /*
@@ -21,16 +21,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// utilizzo il mio controller custom per la dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'] )->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 // qundo creo le mie crud "amministrative" voglio
 // localhost:8000/admin/projects/
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+
+    // Utilizzo il mio controller custom per la dashboard
+    Route::get('/', [DashboardController::class, 'index'] )->middleware(['auth', 'verified'])->name('dashboard');
+});
 
 require __DIR__.'/auth.php';
