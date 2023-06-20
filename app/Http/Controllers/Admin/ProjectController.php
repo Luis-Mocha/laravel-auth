@@ -79,7 +79,7 @@ class ProjectController extends Controller
         $newProject->save();
 
         //ritorno ad un'altra pagina
-        return redirect()->route('admin.projects.index')->with('success', 'Hai aggiunto un nuovo progetto!');
+        return redirect()->route('admin.projects.index')->with('successCreate', 'Hai creato un nuovo progetto!');
     }
 
     /**
@@ -144,7 +144,7 @@ class ProjectController extends Controller
         $project->update( $form_data );
 
         //ritorno ad un'altra pagina
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('successEdit', 'Hai modificato un progetto!');
     }
 
     /**

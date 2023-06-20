@@ -20,9 +20,16 @@
     <div class="container mb-4">
 
         {{-- messaggio in caso di successo creazione fumetto --}}
-        @if (Session::has('success') )
+        @if (Session::has('successCreate') )
             <div class="alert bg-primary text-center text-light">
-                {!! Session::get('success') !!}
+                {!! Session::get('successCreate') !!}
+            </div>
+        @endif
+
+        {{-- messaggio in caso di successo modifica fumetto --}}
+        @if (Session::has('successEdit') )
+            <div class="alert bg-primary text-center text-light">
+                {!! Session::get('successEdit') !!}
             </div>
         @endif
 
