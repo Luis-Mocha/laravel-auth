@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 // importo il modello
 use App\Models\Admin\Project;
 
+// importo la classe Rule per le eccezioni nell'unique
+use Illuminate\Validation\Rule;
+
+
 class ProjectController extends Controller
 {
     /**
@@ -109,6 +113,26 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $request->validate(
+            [
+                'title' => [
+                    'required',
+                    Rule::unique('projects')->ignore($project->id),
+                ],
+                'link_project' => [
+                    'url',
+                    Rule::unique('projects')->ignore($project->id),
+                ]
+            ],
+            [
+                'title.required'=> 'Il campo "titolo" è richiesto',
+                'title.unique'=> 'Questo titolo è già utilizzato in altri progetti',
+                'link_project.unique' => 'Questo link è già utilizzato in altri progetti',
+                'link_project.url' => 'Questo campo deve contenere un link URL valido '
+            ]
+        );
+
+
         // funzione per salvare i dati modificati nel database
         $form_data = $request->all();
 
