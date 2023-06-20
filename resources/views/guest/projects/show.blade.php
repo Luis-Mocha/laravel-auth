@@ -5,14 +5,15 @@
 <div class="content">
     <div class="container">
 
-        <div>
+        <div class="my-5">
             <h1>
-                {{-- {{$project['title']}} --}}
-                hello
-                @php
-                    dd($project)
-                @endphp
+                {{$project['title']}}
             </h1>
+            <span>Descrizione progetto: </span>
+            <p>
+                {{$project['description']}}
+            </p>
+            <a href="{{$project['link_project']}}" target="_blank" rel="noopener noreferrer">Link al progetto</a>
         </div>
 
     </div>

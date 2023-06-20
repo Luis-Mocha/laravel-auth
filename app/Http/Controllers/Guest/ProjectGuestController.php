@@ -18,10 +18,12 @@ class ProjectGuestController extends Controller
         return view( 'guest.projects.index', compact('projects') );
     }
 
-    public function show($id)
+    public function show($slug)
     {
         // Ottengo i dati per il singolo "prodotto"
-        $project = Project::findOrFail($id);
+        $project = Project::findOrFail($slug);
+
+        // dd($project);
 
         return view('guest.projects.show', compact('project'));
     }
