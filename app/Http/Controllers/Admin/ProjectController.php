@@ -62,9 +62,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view( 'admin.projects.edit', compact ('project'));
     }
 
     /**
@@ -74,9 +74,15 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        // funzione per salvare i dati modificati nel database
+        $form_data = $request->all();
+
+        $project->update( $form_data );
+
+        //ritorno ad un'altra pagina
+        return redirect()->route('admin.projects.index');
     }
 
     /**

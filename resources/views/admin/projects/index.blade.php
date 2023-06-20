@@ -16,8 +16,23 @@
         <div class="card-container">
             @forelse ($projects as $elem)
 
-                <div class="project-card p-3 mt-2 border rounded d-flex flex-column justify-content-between">
+                <div class="project-card p-3 mt-2 border rounded d-flex justify-content-between align-items-center">
+
                     <div class="fs-3">{{$elem['title']}}</div>
+
+                    <div>
+                        <button class="btn btn-warning">
+                            <a href="{{route ('admin.projects.edit', $elem) }}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </button>
+
+                        <button class="btn btn-danger ms-2">
+                            <a href="">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </button>
+                    </div>
                 </div>
             
             @empty
