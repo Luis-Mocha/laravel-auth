@@ -22,6 +22,21 @@ class ProjectController extends Controller
         return view( 'guest.projects.index', compact('projects') );
     }
 
+    // funxione per mostrare i projects nella sezione admin
+    /**
+     * Display a listing of the resource in admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexAdmin()
+    {
+        $projects = Project::all();
+
+        return view( 'admin.projects.index', compact('projects') );
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *
