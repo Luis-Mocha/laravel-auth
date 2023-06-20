@@ -13,7 +13,7 @@
             <p>
                 {{$project['description']}}
             </p>
-            <a href="{{$project['link_project']}}" target="_blank" rel="noopener noreferrer">Link al progetto</a>
+            <a href="{{$project['link_project']}}" target="_blank" rel="noopener noreferrer" class="text-primary">Link al progetto</a>
         </div>
 
     </div>
