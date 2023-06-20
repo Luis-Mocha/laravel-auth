@@ -27,11 +27,18 @@
                             </a>
                         </button>
 
-                        <button class="btn btn-danger ms-2">
-                            <a href="">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </a>
-                        </button>
+                        {{-- bottone delete --}}
+                        <form action=" {{ route('admin.projects.destroy', $elem) }} " method="POST" class="d-inline-block">
+
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="btn btn-danger ms-2">
+                                <a href="">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </button>
+                        </form>
                     </div>
                 </div>
             
