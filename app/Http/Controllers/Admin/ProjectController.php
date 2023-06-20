@@ -109,6 +109,11 @@ class ProjectController extends Controller
         // funzione per salvare i dati modificati nel database
         $form_data = $request->all();
 
+        //trasformo lo slug
+        $slug = Project::generateSlug($request->title);
+
+        $form_data['slug'] =$slug;
+
         $project->update( $form_data );
 
         //ritorno ad un'altra pagina
