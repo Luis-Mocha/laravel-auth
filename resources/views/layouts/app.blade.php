@@ -95,6 +95,8 @@
             @yield('content')
         </main>
     </div>
+
+    @yield('script-custom')
 </body>
 
 </html>
