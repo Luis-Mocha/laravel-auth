@@ -39,6 +39,10 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
 
     // Utilizzo il mio controller custom per la dashboard
     Route::get('/', [DashboardController::class, 'index'] )->middleware(['auth', 'verified'])->name('dashboard');
+
+    //route per mostrare i progetti nella sezione admin
+    Route::get('/projects', [ProjectController::class, 'indexAdmin'] )->middleware(['auth', 'verified'])->name('projectsAdmin');
+
 });
 
 require __DIR__.'/auth.php';
