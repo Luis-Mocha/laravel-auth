@@ -21,7 +21,7 @@
                 <label for="input-title" class="form-label">Title:</label>
                 <input type="text" id="input-title" class="form-control" name="title" placeholder="Inserisci il titolo" required value="{{ old('title') }}"> 
             </div>
-            {{-- erorre validazione --}}
+            {{-- errore validazione --}}
             @error('title')
                 <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
             @enderror
@@ -34,7 +34,11 @@
             <div class="form-group mt-3">
                 <label for="input-link_project" class="form-label">Link Progetto:</label>
                 <input type="text" id="input-link_project" class="form-control" name="link_project" placeholder="Inserisci il link al progetto" required value="{{ old('link_project') }}"> 
-            </div>        
+            </div>
+            {{-- errore validazione --}}
+            @error('link_project')
+                <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
+            @enderror      
             
             <div>
                 <button type="submit" class="btn btn-primary my-4 col-2 d-block mx-auto">

@@ -46,11 +46,14 @@ class ProjectController extends Controller
 
         $request->validate(
             [
-                'title' => 'required|unique:projects'
+                'title' => 'required|unique:projects',
+                'link_project' => 'unique:projects|url'
             ],
             [
                 'title.required'=> 'Il campo "titolo" è richiesto',
                 'title.unique'=> 'Questo titolo è già utilizzato',
+                'link_project.unique' => 'Questo link è già utilizzato',
+                'link_project.url' => 'Questo campo deve contenere un link URL valido '
             ]
         );
 
