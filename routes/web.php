@@ -27,6 +27,11 @@ Route::get('/', function () {
 
 //route per mostrare i progetti nella sezione guest
 Route::resource('/projects', ProjectGuestController::class);
+// ->parameters(
+//     [
+//     'projects' => 'project:slug'
+//     ]
+// )
 
 
 
@@ -44,7 +49,11 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     // Utilizzo il mio controller custom per la dashboard
     Route::get('/', [DashboardController::class, 'index'] )->middleware(['auth', 'verified'])->name('dashboard');
 
-    Route::resource('/projects', ProjectController::class);
+    Route::resource('/projects', ProjectController::class)->parameters(
+        [
+        'projects' => 'project:slug'
+        ]
+    );
 
 });
 
