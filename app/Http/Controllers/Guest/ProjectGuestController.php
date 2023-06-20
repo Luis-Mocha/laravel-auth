@@ -20,6 +20,9 @@ class ProjectGuestController extends Controller
 
     public function show($id)
     {
-        //
+        // Ottengo i dati per il singolo "prodotto"
+        $project = Project::findOrFail($id);
+
+        return view('guest.projects.show', compact('project'));
     }
 }

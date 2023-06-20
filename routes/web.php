@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 // Importo i miei controller
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Guest\ProjectGuestController;
+
 
 
 /*
@@ -24,7 +26,9 @@ Route::get('/', function () {
 });
 
 //route per mostrare i progetti nella sezione guest
-Route::get('/projects', [ProjectController::class, 'indexGuest'] )->name('projectsGuest');
+Route::get('/projects', [ProjectGuestController::class, 'index'] )->name('projectsGuest');
+Route::get('/projects/show', [ProjectGuestController::class, 'show'] )->name('projectsGuestShow');
+
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
