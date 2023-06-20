@@ -31,7 +31,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        // inserisco solo la view
+        return view('admin.projects.create');
     }
 
     /**
@@ -42,7 +43,36 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate(
+            [
+                'title' => 'required|unique:projects'
+            ],
+            [
+                'title.required'=> 'Il campo "titolo" è richiesto',
+                'title.unique'=> 'Questo titolo è già utilizzato',
+            ]
+        );
+
+        // funzione per salvare i nuovi dati nel database
+        $form_data = $request ->all();
+        // dd($request);
+
+        //trasformo lo slug
+        $slug = Project::generateSlug($request->title);
+
+
+        $form_data['slug'] =$slug;
+
+        //creo il nuovo progetto
+        $newProject = new Project();
+        
+        $newProject->fill( $form_data );
+
+        $newProject->save();
+
+        //ritorno ad un'altra pagina
+        return redirect()->route('admin.projects.index')->with('success', 'Hai aggiunto un nuovo progetto!');
     }
 
     /**

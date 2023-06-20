@@ -7,6 +7,12 @@
         <h1 class="display-5 fw-bold">
             Project List
         </h1>
+
+        <a href="{{ route('admin.projects.create') }}">
+            <button class="btn btn-primary mt-3">
+                Create Project
+            </button>
+        </a>
     </div>
 </div>
 
