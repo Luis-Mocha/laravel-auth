@@ -26,8 +26,6 @@ Route::get('/', function () {
 });
 
 //route per mostrare i progetti nella sezione guest
-// Route::get('/projects', [ProjectGuestController::class, 'index'] )->name('projectsGuest');
-// Route::get('/projects/show', [ProjectGuestController::class, 'show'] )->name('projectsGuestShow');
 Route::resource('/projects', ProjectGuestController::class);
 
 
