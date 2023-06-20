@@ -41,7 +41,7 @@
                     <div class="fs-3">{{$elem['title']}}</div>
 
                     <div>
-                        <button class="btn btn-warning">
+                        <button class="btn btn-warning" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Edit this Project">
                             <a href="{{route ('admin.projects.edit', $elem) }}">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
@@ -53,7 +53,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <button class="btn btn-danger ms-2">
+                            <button class="btn btn-danger ms-2" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Delete this Project" onclick=" return stopDelete(' {{ $elem['title'] }} ')">
                                 <a href="">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a>
@@ -69,4 +69,17 @@
 
     </div>
 </div>
+@endsection
+
+{{-- SCRIPT CUSTOM --}}
+@section('script-custom')
+
+<script>
+    // console.log(' helloo ');
+
+    function stopDelete(par) {
+        return confirm(`The deletion will be permanent. Do you confirm you want to delete ${par}?`)
+    };
+</script>
+
 @endsection
