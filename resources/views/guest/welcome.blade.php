@@ -8,7 +8,7 @@
             Welcome to my portfolio
         </h1>
 
-        <a href="" class="btn btn-primary btn-lg" type="button">Projects</a>
+        <a href="{{ route('projects.index') }}" class="btn btn-primary btn-lg" type="button">Projects</a>
     </div>
 </div>
 
