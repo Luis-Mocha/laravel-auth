@@ -19,7 +19,7 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
 
-        return view( 'guest.projects.index', compact('projects') );
+        return view( 'admin.projects.index', compact('projects') );
     }
 
     // funxione per mostrare i projects nella sezione admin
@@ -28,11 +28,11 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexAdmin()
+    public function indexGuest()
     {
         $projects = Project::all();
 
-        return view( 'admin.projects.index', compact('projects') );
+        return view( 'guest.projects.index', compact('projects') );
     }
 
 

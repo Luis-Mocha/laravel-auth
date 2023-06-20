@@ -23,7 +23,8 @@ Route::get('/', function () {
     return view('guest.welcome');
 });
 
-Route::resource('/projects', ProjectController::class);
+//route per mostrare i progetti nella sezione guest
+Route::get('/projects', [ProjectController::class, 'indexGuest'] )->name('projectsGuest');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -40,8 +41,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     // Utilizzo il mio controller custom per la dashboard
     Route::get('/', [DashboardController::class, 'index'] )->middleware(['auth', 'verified'])->name('dashboard');
 
-    //route per mostrare i progetti nella sezione admin
-    Route::get('/projects', [ProjectController::class, 'indexAdmin'] )->middleware(['auth', 'verified'])->name('projectsAdmin');
+    Route::resource('/projects', ProjectController::class);
 
 });
 
