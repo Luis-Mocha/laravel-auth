@@ -44,6 +44,10 @@
                 <label for="input-cover_img" class="form-label">File immagine:</label>
                 <input type="file" name="cover_img" id="input-cover_img" class="form-control">
             </div>
+            {{-- errore validazione --}}
+            @error('cover_img')
+                <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
+            @enderror
             
             <div>
                 <button type="submit" class="btn btn-primary my-4 col-2 d-block mx-auto">
