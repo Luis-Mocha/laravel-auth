@@ -11,6 +11,9 @@ use App\Models\Admin\Project;
 // importo la classe Rule per le eccezioni nell'unique
 use Illuminate\Validation\Rule;
 
+// importo lo Storage
+use Illuminate\Support\Facades\Storage;
+
 
 class ProjectController extends Controller
 {
@@ -53,7 +56,7 @@ class ProjectController extends Controller
                 'title' => 'required|unique:projects',
                 'description' => 'nullable',
                 'cover_img' => 'nullable|image',
-                'link_project' => 'unique:projects|url',
+                'link_project' => 'nullable|unique:projects|url',
             ],
             [
                 'title.required'=> 'Il campo "titolo" è richiesto',
@@ -72,7 +75,17 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($request->title);
 
 
-        $form_data['slug'] =$slug;
+        $form_data['slug'] = $slug;
+
+        // caricamento immagine se presente
+        if ($request->hasFile('cover_img') ) {
+
+            // creo un path dove viene salvata la cover del progetto
+            // 'project_covers' è una sottocartella che creo in storage
+            $path = Storage::disk('public')->put('project_covers', $request->cover_img );
+
+            $form_data['cover_img'] = $path;
+        }
 
         //creo il nuovo progetto
         $newProject = new Project();
@@ -125,6 +138,7 @@ class ProjectController extends Controller
                 'description' => 'nullable',
                 'cover_img' => 'nullable|image',
                 'link_project' => [
+                    'nullable',
                     'url',
                     Rule::unique('projects')->ignore($project->id),
                 ]
@@ -132,6 +146,7 @@ class ProjectController extends Controller
             [
                 'title.required'=> 'Il campo "titolo" è richiesto',
                 'title.unique'=> 'Questo titolo è già utilizzato in altri progetti',
+                'cover_img.image' => 'Il file deve essere di tipo immagine',
                 'link_project.unique' => 'Questo link è già utilizzato in altri progetti',
                 'link_project.url' => 'Questo campo deve contenere un link URL valido '
             ]
@@ -145,6 +160,23 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($request->title);
 
         $form_data['slug'] =$slug;
+
+
+        // caricamento immagine se presente
+        if ($request->hasFile('cover_img') ) {
+
+            //cancello per sostituire (update)
+            if( $project->cover_img ){
+                Storage::delete($project->cover_img);
+            }
+
+            // creo un path dove viene salvata la cover del progetto
+            // 'project_covers' è una sottocartella che creo in storage
+            $path = Storage::disk('public')->put('project_covers', $request->cover_img );
+
+            $form_data['cover_img'] = $path;
+        }
+
 
         $project->update( $form_data );
 
@@ -160,6 +192,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        //cancello l'immagine dallo storage
+        if( $project->cover_img ){
+            Storage::delete($project->cover_img);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index');
