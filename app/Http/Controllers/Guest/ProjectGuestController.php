@@ -50,10 +50,12 @@ class ProjectGuestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($elem)
+    public function show($slug)
     {
         // Ottengo i dati per il singolo "prodotto"
-        $project = Project::findOrFail($elem);
+        // $project = Project::findOrFail($elem);
+        $project = Project::where('slug', $slug)->firstOrFail();
+
 
         // dd($project);
 
