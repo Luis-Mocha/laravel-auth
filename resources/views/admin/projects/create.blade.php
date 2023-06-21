@@ -41,8 +41,8 @@
             @enderror
 
             <div class="form-group mt-3">
-                <label for="input-img_project" class="form-label">File immagine:</label>
-                <input type="file" name="img_project" id="input-img_project" class="form-control">
+                <label for="input-cover_img" class="form-label">File immagine:</label>
+                <input type="file" name="cover_img" id="input-cover_img" class="form-control">
             </div>
             
             <div>
