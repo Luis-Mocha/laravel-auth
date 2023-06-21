@@ -41,6 +41,7 @@
                     <div class="fs-3">{{$elem['title']}}</div>
 
                     <div>
+                        {{-- bottone edit --}}
                         <button class="btn btn-warning" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Edit this Project">
                             <a href="{{route ('admin.projects.edit', $elem) }}">
                                 <i class="fa-solid fa-pen-to-square"></i>
