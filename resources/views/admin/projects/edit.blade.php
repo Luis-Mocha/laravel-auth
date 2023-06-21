@@ -42,8 +42,19 @@
             {{-- errore validazione --}}
             @error('link_project')
                 <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
-            @enderror      
+            @enderror 
             
+            <div class="form-group mt-3">
+                <label for="input-cover_img" class="form-label">File immagine:</label>
+                <input type="file" name="cover_img" id="input-cover_img" class="form-control" value="{{ old('cover_img') ?? $project->cover_img }}">
+            </div>
+            {{-- errore validazione --}}
+            @error('cover_img')
+                <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
+            @enderror
+
+
+            {{-- Bottone Edit --}}
             <div>
                 <button type="submit" class="btn btn-primary my-4 col-2 d-block mx-auto">
                     Edit Project
