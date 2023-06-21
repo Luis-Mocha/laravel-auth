@@ -13,7 +13,7 @@
 <div class="content">
     <div class="container mb-4">
 
-        <form action=" {{ route('admin.projects.store') }} " method="POST" class="row" autocomplete="off">
+        <form action=" {{ route('admin.projects.store') }} " method="POST" enctype="multipart/form-data" class="row" autocomplete="off" >
 
             @csrf
 
@@ -38,7 +38,12 @@
             {{-- errore validazione --}}
             @error('link_project')
                 <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
-            @enderror      
+            @enderror
+
+            <div class="form-group mt-3">
+                <label for="input-img_project" class="form-label">File immagine:</label>
+                <input type="file" name="img_project" id="input-img_project" class="form-control">
+            </div>
             
             <div>
                 <button type="submit" class="btn btn-primary my-4 col-2 d-block mx-auto">
