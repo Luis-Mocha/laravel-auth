@@ -6,6 +6,7 @@
     <div class="container">
 
         <div class="my-5">
+            <img src="{{ asset('storage/' . $project->cover_img) }}" class="img-fluid" alt="...">
             <h1>
                 {{$project['title']}}
             </h1>

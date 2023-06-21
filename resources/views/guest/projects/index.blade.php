@@ -16,13 +16,16 @@
         <div class="card-container row mb-5">
             @forelse ($projects as $elem)
 
-                <div class="project-card p-3 col-6 col-md-4 col-lg-3 g-3 border rounded d-flex flex-column justify-content-between">
-                    <a href="{{ route('projects.show' , $elem->slug ) }}">
-                        <img src="https://media.istockphoto.com/id/1033918582/vector/setting-gear-tool-cog-isolated-flat-web-mobile-icon-vector-sign-symbol-button-element.jpg?s=612x612&w=0&k=20&c=3foI6MrLv042faO8w8vLoNb3AedZzRVBphIyjdDSprw=" style="max-width: 100px" class="card-img-top w-100" alt="...">
+                <div class="project-card p-3 col-6 col-md-4 col-lg-3 g-3 border rounded">
+
+                    <a href="{{ route('projects.show' , $elem->slug ) }}" class="h-100 d-flex flex-column justify-content-between">
+
+                        <img src="{{ asset('storage/' . $elem->cover_img) }}" class="img-fluid" alt="...">
+
+                        <div class="fs-3">{{$elem['title']}}</div>
+
                     </a>
 
-                    <div class="fs-3">{{$elem['title']}}</div>
-                    
                 </div>
             
             @empty
