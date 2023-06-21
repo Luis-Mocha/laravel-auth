@@ -33,7 +33,7 @@
 
             <div class="form-group mt-3">
                 <label for="input-link_project" class="form-label">Link Progetto:</label>
-                <input type="text" id="input-link_project" class="form-control" name="link_project" placeholder="Inserisci il link al progetto" required value="{{ old('link_project') }}"> 
+                <input type="text" id="input-link_project" class="form-control" name="link_project" placeholder="Inserisci il link al progetto" value="{{ old('link_project') }}"> 
             </div>
             {{-- errore validazione --}}
             @error('link_project')
