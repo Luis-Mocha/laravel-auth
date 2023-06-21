@@ -14,7 +14,7 @@
 <div class="content">
     <div class="container mb-4">
 
-        <form action=" {{ route('admin.projects.update', $project ) }} " method="POST" class="row" autocomplete="off">
+        <form action=" {{ route('admin.projects.update', $project ) }} " method="POST" enctype="multipart/form-data" class="row" autocomplete="off">
 
             @csrf
 
@@ -37,7 +37,7 @@
 
             <div class="form-group mt-3">
                 <label for="input-link_project" class="form-label">Link Progetto:</label>
-                <input type="text" id="input-link_project" class="form-control" name="link_project" placeholder="Inserisci la serie di appartenenza" required value="{{ old('link_project') ?? $project->link_project }}"> 
+                <input type="text" id="input-link_project" class="form-control" name="link_project" placeholder="Inserisci la serie di appartenenza" value="{{ old('link_project') ?? $project->link_project }}"> 
             </div>
             {{-- errore validazione --}}
             @error('link_project')
