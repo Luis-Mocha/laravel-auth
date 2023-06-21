@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title', 150)->unique();
             $table->string('slug');
             $table->text('description')->nullable();
+            $table->string('cover_img')->nullable();
             $table->string('link_project')->unique()->nullable();
-
 
             $table->timestamps();
         });

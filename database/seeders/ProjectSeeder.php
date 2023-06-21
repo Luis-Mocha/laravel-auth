@@ -24,14 +24,15 @@ class ProjectSeeder extends Seeder
     public function run(Faker $faker)
     {
         
-        for($i = 0; $i < 8; $i++) {
+        for($i = 0; $i < 4; $i++) {
             //creo una nuova istanza
             $new_project = new Project();
             $new_project->title = $faker->sentence(3);
             $new_project->slug = Str::slug( $new_project->title , '-');
             $new_project->description = $faker->text(500);
+            $new_project->cover_img = $faker->imageUrl(640, 480, 'project', true);
             $new_project->link_project = $faker->url();
-
+            
             $new_project->save();
         }
 
