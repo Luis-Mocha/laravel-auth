@@ -29,12 +29,12 @@
 
     </div>
 
-    <div class="container">
+    <div class="container vh-100 d-flex align-items-center py-3">
 
-        <div id="card-section" class="card-container">
+        <div id="card-section"  class="card-container row flex-column flex-sm-row  flex-nowrap overflow-x-auto">
             @forelse ($projects as $elem)
 
-                <div class="project-card p-3 col-6 col-md-4 col-lg-3 g-3 border rounded">
+                <div class="project-card border rounded">
 
                     <a href="{{ route('projects.show' , $elem->slug ) }}" class="h-100 d-flex flex-column justify-content-between">
 
@@ -53,4 +53,26 @@
 
     </div>
 </div>
+@endsection
+
+@section('script-custom')
+    <script>
+
+        // funzione per lo scroll orizzonatale
+        const container = document.getElementById("card-section");
+
+        container.addEventListener("wheel", function (event) {
+            if (window.innerWidth > 576) {
+                event.preventDefault();
+                if (event.deltaY > 0) {
+                        container.scrollLeft += 100
+                } else {
+                    container.scrollLeft -= 100
+                }
+                // container.scrollLeft += event.deltaY;
+            }
+        
+        });
+
+    </script>
 @endsection
