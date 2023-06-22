@@ -1,19 +1,37 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="jumbotron p-3 mb-4 bg-light rounded-3">
-    <div class="container py-5">
 
-        <h1 class="display-5 fw-bold">
-            Explore my projects
-        </h1>
+<div class="guestIndexContent">
+
+    <div class="page-hero">
+
+        <h1 class="type" style="--n:15;">My projects</h1>
+
+        <div class="projects-presentation">
+            <p>
+                Benvenuti nella sezione dedicata ai miei progetti.
+                <br>
+                Ogni progetto è il frutto di passione, creatività e impegno.
+                <hr>
+                In questa sezione troverete una selezione dei miei progetti più significativi. Ogni progetto è stato sviluppato con cura, tenendo conto delle esigenze e dei desideri dei clienti, e mi ha permesso di ampliare le mie competenze e di affinare la mia abilità nel creare esperienze digitali coinvolgenti e funzionali.
+                <hr>
+                Vi invito a esplorare questa sezione dedicata ai miei progetti, nella quale troverete descrizioni dettagliate, immagini e, quando possibile, i link per visualizzare i siti web in azione. Spero che vi ispirino e vi offrano un'idea chiara delle mie competenze e della mia passione per lo sviluppo web.
+            </p>
+        </div>
+
+        {{-- bottone link --}}
+        <a href="#card-section">
+            <button>
+                <i class="fa-solid fa-angles-down"></i>
+            </button>
+        </a>
+
     </div>
-</div>
 
-<div class="content">
     <div class="container">
 
-        <div class="card-container row mb-5">
+        <div id="card-section" class="card-container">
             @forelse ($projects as $elem)
 
                 <div class="project-card p-3 col-6 col-md-4 col-lg-3 g-3 border rounded">

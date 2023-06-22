@@ -1,0 +1,83 @@
+.guestIndexContent {
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027);
+
+    color: white;
+
+    .page-hero {
+        position:relative;
+
+        h1 {
+            position:absolute;
+            width: fit-content;
+            margin-top: 40px;
+            margin-left: 60px;
+            font-size: 50px;
+        }
+
+        .projects-presentation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 20px;
+
+            max-height: 60%;
+            overflow: auto;
+            // transition: 4s;
+            opacity: 1;
+            animation-name: opacity-in;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            @keyframes opacity-in {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+        @media screen and (max-width: 500px) {
+            .projects-presentation {
+                border-top: 0px;
+                border-bottom: 3px;
+                border-left: 0;
+                border-right: 3px;
+                border-color: white;
+                border-style:groove;
+            }
+        }
+
+        button {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translate(-50%);
+
+            font-size: 35px;
+            color: rgba(255, 255, 255, 0.43);
+            &:hover{
+                animation-name: flash;
+                animation-duration: 1.5s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+            @keyframes flash {
+                0% {color: rgba(255, 255, 255, 0.43);}
+                50% {color: white;}
+                100% {color: rgba(255, 255, 255, 0.43);}
+            }
+        }
+    }
+
+    .card-container {
+        padding:30px 0;
+
+        .project-card {
+
+        }
+    }
+}
